@@ -236,12 +236,26 @@ body {
   border: 1px solid var(--color-border);
   transition: all 0.3s;
   padding: 2rem;
+  position: relative;
 }
 
 .post-card:hover {
   transform: translateY(-4px);
   box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.3);
   border-color: var(--color-primary);
+}
+
+.post-card-link {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 1;
+}
+
+.post-content {
+  position: relative;
 }
 
 .post-content h3 {
@@ -283,9 +297,21 @@ body {
   display: flex;
   align-items: center;
   gap: 0.375rem;
+  position: relative;
+  z-index: 2;
 }
 
 .meta-item svg {
+  color: var(--color-primary);
+}
+
+.meta-author, .meta-date {
+  text-decoration: none;
+  color: var(--color-text-muted);
+  transition: color 0.2s;
+}
+
+.meta-author:hover, .meta-date:hover {
   color: var(--color-primary);
 }
 

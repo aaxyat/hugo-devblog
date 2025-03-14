@@ -9,6 +9,8 @@ This document contains the release notes for the DevBlog Hugo theme. It details 
 #### New Features
 - Added URL support for images in both hero section background and author/team profiles
 - Enhanced flexibility for using both local and external image sources
+- Added clickable post cards for better user experience
+- Improved navigation with author name linking to about page and date linking to archive page
 
 #### Improvements
 - Updated documentation to show examples of URL-based images
