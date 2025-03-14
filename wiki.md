@@ -24,6 +24,7 @@ DevBlog is a modern, responsive Hugo theme designed for developer blogs. This do
   - [Custom Sections](#custom-sections)
   - [Copyright and Credits](#copyright-and-credits)
 - [Archive Page](#archive-page)
+- [Math Support](#math-support)
 
 ## Basic Configuration
 
@@ -446,3 +447,66 @@ The standard style displays each post with its date, title, summary, and meta in
 #### Compact Style
 
 The compact style shows a more condensed list with just dates and titles, perfect for sites with many posts.
+
+## Math Support
+
+DevBlog includes built-in support for mathematical expressions using KaTeX. You can write both inline and display math expressions in your Markdown content.
+
+### Configuration
+
+Math rendering is enabled by default. To disable it:
+
+```toml
+[params.math]
+  disable = true
+```
+
+### Using Math Expressions
+
+DevBlog supports the following delimiters for math expressions:
+
+1. Inline math with single dollar signs: `$E = mc^2$`
+2. Inline math with `\( ... \)`: `\(E = mc^2\)`
+3. Display math with double dollar signs:
+   ```
+   $$
+   \frac{d}{dx}e^x = e^x
+   $$
+   ```
+4. Display math with `\[ ... \]`:
+   ```
+   \[
+   \frac{d}{dx}e^x = e^x
+   \]
+   ```
+
+### Examples
+
+Inline equation: $E = mc^2$ will appear inline with your text.
+
+Display equation:
+
+$$
+\frac{d}{dx}\left( \int_{0}^{x} f(u)\,du\right)=f(x)
+$$
+
+**Note**: Sometimes complex math expressions might require additional escaping when used in Markdown.
+
+## Code Blocks
+
+DevBlog includes several enhancements to make code blocks more useful:
+
+### Code Copying
+
+All code blocks on your site will automatically have a copy button that appears when users hover over the block. This makes it easy for readers to copy code examples with a single click.
+
+### Code Highlighting
+
+The theme uses Hugo's built-in syntax highlighting capabilities. You can specify the language for a code block using the standard Markdown syntax:
+
+```go
+// Go code example
+func main() {
+    fmt.Println("Hello, world!")
+}
+```
