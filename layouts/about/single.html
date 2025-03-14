@@ -1,0 +1,26 @@
+{{ define "main" }}
+<!-- About Hero Section -->
+<section class="page-hero">
+  <div class="container">
+    <div class="page-hero-content">
+      <h1>{{ .Title }}</h1>
+      <p>{{ .Description }}</p>
+    </div>
+  </div>
+</section>
+
+<!-- Main Content -->
+<main class="main">
+  <div class="container">
+    <div class="about-content">
+      {{- $layoutType := .Params.layout -}} {{ if not $layoutType }} {{/* If
+      layout is not specified, auto-detect based on authors */}} {{ if
+      .Params.team }} {{ $layoutType = "team" }} {{ else if gt (len
+      .Params.authors) 1 }} {{ $layoutType = "team" }} {{ else }} {{ $layoutType
+      = "single" }} {{ end }} {{ end }} {{ if eq $layoutType "team" }} {{
+      partial "about-team.html" . }} {{ else }} {{ partial "about-single.html" .
+      }} {{ end }} {{ .Content }}
+    </div>
+  </div>
+</main>
+{{ end }}

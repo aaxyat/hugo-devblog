@@ -1,0 +1,78 @@
+{{ define "main" }}
+<!-- Hero Section -->
+{{ if not .Site.Params.hero.disable }} {{ partial "hero.html" . }} {{ end }}
+
+<!-- Posts Grid -->
+<main class="main">
+  <div class="container">
+    <div class="posts-grid">
+      {{ $paginator := .Paginate (where site.RegularPages "Type" "posts") }} {{
+      range $paginator.Pages }}
+      <article class="post-card">
+        <div class="post-content">
+          <h3><a href="{{ .RelPermalink }}">{{ .Title }}</a></h3>
+          <p class="post-excerpt">{{ .Summary | truncate 150 }}</p>
+          <div class="post-meta">
+            {{ with .Params.author }}
+            <span class="meta-item">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="16"
+                height="16"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"></path>
+                <circle cx="12" cy="7" r="4"></circle>
+              </svg>
+              {{ . }}
+            </span>
+            {{ end }}
+            <span class="meta-item">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="16"
+                height="16"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+                <line x1="16" y1="2" x2="16" y2="6"></line>
+                <line x1="8" y1="2" x2="8" y2="6"></line>
+                <line x1="3" y1="10" x2="21" y2="10"></line>
+              </svg>
+              {{ .Date.Format "January 2, 2006" }}
+            </span>
+            <span class="meta-item">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="16"
+                height="16"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <circle cx="12" cy="12" r="10"></circle>
+                <polyline points="12 6 12 12 16 14"></polyline>
+              </svg>
+              {{ .ReadingTime }} min read
+            </span>
+          </div>
+        </div>
+      </article>
+      {{ end }}
+    </div>
+  </div>
+</main>
+{{ end }}

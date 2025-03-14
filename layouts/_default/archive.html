@@ -1,0 +1,76 @@
+{{ define "main" }}
+<!-- Archive Hero Section -->
+<section class="page-hero">
+  <div class="container">
+    <div class="page-hero-content">
+      <h1>{{ .Title | default "Archive" }}</h1>
+      <p>{{ .Description | default "All posts organized by date" }}</p>
+    </div>
+  </div>
+</section>
+
+<!-- Main Content -->
+<main class="main">
+  <div class="container">
+    <div class="archive-content">
+      {{ $posts := where .Site.RegularPages "Type" "posts" }} {{ if
+      .Site.Params.archive.showSearch }}
+      <div class="archive-search">
+        <input
+          id="archive-search-input"
+          type="search"
+          placeholder="Search posts..."
+          aria-label="Search posts"
+        />
+      </div>
+      {{ end }} {{ if eq .Site.Params.archive.style "compact" }} {{ partial
+      "archive-compact.html" (dict "posts" $posts "Page" .) }} {{ else }} {{
+      partial "archive-standard.html" (dict "posts" $posts "Page" .) }} {{ end
+      }}
+    </div>
+  </div>
+</main>
+
+{{ if .Site.Params.archive.showSearch }}
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const searchInput = document.getElementById("archive-search-input");
+    const archiveItems = document.querySelectorAll(".archive-item");
+
+    searchInput.addEventListener("input", (e) => {
+      const searchTerm = e.target.value.toLowerCase().trim();
+
+      archiveItems.forEach((item) => {
+        const title = item
+          .querySelector(".archive-item-title")
+          .textContent.toLowerCase();
+        const summary =
+          item
+            .querySelector(".archive-item-summary")
+            ?.textContent.toLowerCase() || "";
+
+        if (title.includes(searchTerm) || summary.includes(searchTerm)) {
+          item.style.display = "";
+
+          // Make sure the parent year section is visible if any child is visible
+          const yearSection = item.closest(".archive-year");
+          if (yearSection) {
+            yearSection.style.display = "";
+          }
+        } else {
+          item.style.display = "none";
+        }
+      });
+
+      // Hide year headings with no visible posts
+      document.querySelectorAll(".archive-year").forEach((yearSection) => {
+        const visiblePosts = [
+          ...yearSection.querySelectorAll(".archive-item"),
+        ].filter((item) => item.style.display !== "none");
+
+        yearSection.style.display = visiblePosts.length ? "" : "none";
+      });
+    });
+  });
+</script>
+{{ end }} {{ end }}

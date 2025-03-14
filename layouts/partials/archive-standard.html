@@ -1,0 +1,74 @@
+<div class="archive-list">
+  {{ $prevYear := 0 }} {{ range .posts.GroupByDate "2006" }} {{ $year := .Key }}
+
+  <div class="archive-year">
+    <h2 class="archive-year-heading">{{ $year }}</h2>
+
+    <div class="archive-items">
+      {{ range .Pages }}
+      <article class="archive-item">
+        <div class="archive-item-date">
+          <span>{{ .Date.Format "Jan 02" }}</span>
+        </div>
+
+        <div class="archive-item-content">
+          <h3 class="archive-item-title">
+            <a href="{{ .RelPermalink }}">{{ .Title }}</a>
+          </h3>
+
+          <p class="archive-item-summary">{{ .Summary | truncate 180 }}</p>
+
+          <div class="archive-item-meta">
+            {{ with .Params.author }}
+            <span class="meta-item">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="16"
+                height="16"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"></path>
+                <circle cx="12" cy="7" r="4"></circle>
+              </svg>
+              {{ . }}
+            </span>
+            {{ end }}
+
+            <span class="meta-item">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="16"
+                height="16"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <circle cx="12" cy="12" r="10"></circle>
+                <polyline points="12 6 12 12 16 14"></polyline>
+              </svg>
+              {{ .ReadingTime }} min read
+            </span>
+
+            {{ if .Params.categories }}
+            <div class="archive-categories">
+              {{ range first 1 .Params.categories }}
+              <span class="archive-category">{{ . }}</span>
+              {{ end }}
+            </div>
+            {{ end }}
+          </div>
+        </div>
+      </article>
+      {{ end }}
+    </div>
+  </div>
+  {{ end }}
+</div>

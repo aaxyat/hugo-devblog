@@ -1,0 +1,27 @@
+<div class="archive-list archive-list-compact">
+  {{ range .posts.GroupByDate "2006" }}
+  <div class="archive-year">
+    <h2 class="archive-year-heading">{{ .Key }}</h2>
+
+    <ul class="archive-items-compact">
+      {{ range .Pages }}
+      <li class="archive-item">
+        <span class="archive-item-date">{{ .Date.Format "Jan 02" }}</span>
+        <h3 class="archive-item-title">
+          <a href="{{ .RelPermalink }}">{{ .Title }}</a>
+        </h3>
+        {{ with .Params.categories }}
+        <div class="archive-compact-categories">
+          {{ range first 1 . }}<span class="archive-category">{{ . }}</span>{{
+          end }}
+        </div>
+        {{ end }}
+        <span class="archive-item-summary" style="display: none"
+          >{{ .Summary }}</span
+        >
+      </li>
+      {{ end }}
+    </ul>
+  </div>
+  {{ end }}
+</div>

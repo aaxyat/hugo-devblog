@@ -1,0 +1,12 @@
+name = "DevBlog"
+license = "MIT"
+licenselink = "https://github.com/aaxyat/hugo-devblog/blob/main/LICENSE"
+description = "A modern blog theme for developers"
+homepage = "https://github.com/aaxyat/hugo-devblog"
+tags = ["blog", "developer", "responsive", "modern", "dark"]
+features = ["responsive", "blog", "dark mode"]
+min_version = "0.80.0"
+
+[author]
+  name = "Ayush Bhattarai"
+  homepage = "https://ayushb.com"

@@ -1,0 +1,216 @@
+<section class="about-section">
+  <h2>{{ .Params.missionTitle | default "My Mission" }}</h2>
+  {{ with .Params.mission }} {{ . | markdownify }} {{ else }}
+  <p>
+    I started {{ site.Title }} in {{ .Params.startYear | default now.Format
+    "2006" }} with a simple mission: to share practical knowledge and insights
+    about software development with the community. I believe that technology
+    should be accessible to everyone, and my goal is to create content that
+    helps developers of all skill levels grow their expertise.
+  </p>
+  <p>
+    Whether you're just starting your coding journey or you're a seasoned
+    professional looking to stay updated with the latest trends, I aim to
+    provide valuable resources and genuine insights from my own experience in
+    the field.
+  </p>
+  {{ end }}
+</section>
+
+<section class="about-section">
+  <h2>{{ .Params.topicsTitle | default "What I Write About" }}</h2>
+  <div class="topics-grid">
+    {{ range .Params.topics }}
+    <div class="topic-card">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="24"
+        height="24"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        class="topic-icon"
+      >
+        {{ .icon | safeHTML }}
+      </svg>
+      <h3>{{ .name }}</h3>
+      <p>{{ .description }}</p>
+    </div>
+    {{ end }}
+  </div>
+</section>
+
+<section class="about-section author-section">
+  <h2>{{ .Params.authorSectionTitle | default "About the Author" }}</h2>
+  <div class="author-profile">
+    {{/* Support both legacy 'author' and new 'authors[0]' format */}} {{
+    $authorData := .Params.author }} {{ if not $authorData }} {{ with
+    .Params.authors }} {{ $authorData = index . 0 }} {{ end }} {{ end }}
+
+    <div class="author-avatar">
+      <img src="{{ $authorData.image }}" alt="{{ $authorData.name }}" />
+    </div>
+    <div class="author-info">
+      <h3>{{ $authorData.name }}</h3>
+      <p class="author-title">{{ $authorData.title }}</p>
+      <div class="author-bio">{{ $authorData.bio | markdownify }}</div>
+      <div class="author-social">
+        {{ with $authorData.github }}
+        <a
+          href="https://github.com/{{ . }}"
+          class="social-link"
+          title="GitHub"
+          target="_blank"
+          rel="noopener"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="20"
+            height="20"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <path
+              d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"
+            ></path>
+          </svg>
+        </a>
+        {{ end }} {{ with $authorData.twitter }}
+        <a
+          href="https://twitter.com/{{ . }}"
+          class="social-link"
+          title="Twitter"
+          target="_blank"
+          rel="noopener"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="20"
+            height="20"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <path
+              d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z"
+            ></path>
+          </svg>
+        </a>
+        {{ end }} {{ with $authorData.linkedin }}
+        <a
+          href="https://linkedin.com/in/{{ . }}"
+          class="social-link"
+          title="LinkedIn"
+          target="_blank"
+          rel="noopener"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="20"
+            height="20"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <path
+              d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"
+            ></path>
+            <rect x="2" y="9" width="4" height="12"></rect>
+            <circle cx="4" cy="4" r="2"></circle>
+          </svg>
+        </a>
+        {{ end }} {{ with $authorData.email }}
+        <a href="mailto:{{ . }}" class="social-link" title="Email">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="20"
+            height="20"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <path
+              d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"
+            ></path>
+            <polyline points="22,6 12,13 2,6"></polyline>
+          </svg>
+        </a>
+        {{ end }}
+      </div>
+    </div>
+  </div>
+</section>
+
+{{ if or .Params.newsletter .Params.contact }}
+<section class="about-section">
+  <h2>{{ .Params.connectTitle | default "Join the Community" }}</h2>
+  {{ with .Params.connectText }}
+  <p>{{ . | markdownify }}</p>
+  {{ else }}
+  <p>
+    While I write this blog individually, I love connecting with fellow
+    developers and readers. Feel free to reach out, share your thoughts, suggest
+    topics, or just say hello! You can also join my newsletter to get the latest
+    posts delivered to your inbox.
+  </p>
+  {{ end }}
+  <div class="cta-buttons">
+    {{ with .Params.newsletter }}
+    <a href="{{ . }}" class="cta-button primary">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="20"
+        height="20"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      >
+        <path
+          d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"
+        ></path>
+        <polyline points="22,6 12,13 2,6"></polyline>
+      </svg>
+      Subscribe to Newsletter
+    </a>
+    {{ end }} {{ with .Params.contact }}
+    <a href="{{ . }}" class="cta-button">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="20"
+        height="20"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      >
+        <path
+          d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"
+        ></path>
+      </svg>
+      Contact Me
+    </a>
+    {{ end }}
+  </div>
+</section>
+{{ end }} {{ .Content }}
