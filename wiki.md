@@ -81,14 +81,22 @@ A simplified hero section without social links.
 
 ### Image Background Style
 
-Use an image as the hero background.
+Use an image as the hero background. Both local and external URLs are supported:
 
 ```toml
+# Local image from your static folder
 [params.hero]
   style = "image"
   title = "DevBlog"
   description = "Coding insights and tutorials"
   backgroundImage = "/images/hero-background.jpg"
+
+# OR external URL
+[params.hero]
+  style = "image"
+  title = "DevBlog"
+  description = "Coding insights and tutorials"
+  backgroundImage = "https://example.com/images/background.jpg"
 ```
 
 ### Custom HTML Style
@@ -156,6 +164,20 @@ DevBlog supports both single author and team-based about pages with automatic la
 
 ### About Page Configuration
 
+Create an `index.md` file in a directory called `about` in your content folder (`content/about/index.md`) with the following structure:
+
+```yaml
+---
+title: "About Us"
+description: "Learn more about the team behind this blog"
+startYear: 2022
+# Important: This tells Hugo to use the about layout
+type: "about"
+# ...other parameters as documented below...
+```
+
+The `type: "about"` parameter is essential to ensure Hugo uses the correct template for the about page.
+
 Create a file at `content/about/index.md`. The theme will automatically detect whether to use a single author or team layout based on the number of authors/team members provided:
 
 ```yaml
@@ -184,7 +206,9 @@ valuesIntro: "Custom intro text for values section."
 authors:
   - name: "John Doe"
     title: "Frontend Developer & Technical Writer"
-    image: "/images/john.jpg"
+    # Image can be a local path or a full URL
+    image: "/images/john.jpg"  # Local image from your static folder
+    # image: "https://example.com/images/john.jpg"  # External URL
     bio: |
       Hi there! I'm John, a frontend developer with over 8 years of experience.
       I specialize in TypeScript, React, and modern JavaScript frameworks.
@@ -195,41 +219,11 @@ authors:
 
   - name: "Jane Smith"
     title: "Backend Developer & Editor"
-    image: "/images/jane.jpg" 
+    image: "https://example.com/images/jane.jpg"  # Using an external URL
     bio: "Cloud architecture specialist with expertise in serverless technologies."
     github: "janesmith"
     twitter: "janesmith"
     linkedin: "janesmith"
-
-# Topics you write about
-topics:
-  - name: "Web Development"
-    icon: "<polyline points=\"16 18 22 12 16 6\"></polyline><polyline points=\"8 6 2 12 8 18\"></polyline>"
-    description: "Frontend and backend technologies, frameworks, and best practices."
-  - name: "DevOps & Cloud"
-    icon: "<rect x=\"2\" y=\"3\" width=\"20\" height=\"14\" rx=\"2\" ry=\"2\"></rect><line x1=\"8\" y1=\"21\" x2=\"16\" y2=\"21\"></line><line x1=\"12\" y1=\"17\" x2=\"12\" y2=\"21\"></line>"
-    description: "CI/CD, containerization, cloud platforms, and infrastructure as code."
-
-# Core values (only displayed with team layout)
-values:
-  - name: "Quality Over Quantity"
-    icon: "<path d=\"M12 20h9\"></path><path d=\"M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z\"></path>"
-    description: "We focus on delivering well-researched, in-depth articles rather than churning out content."
-  - name: "Practical Application"
-    icon: "<polyline points=\"16 18 22 12 16 6\"></polyline><polyline points=\"8 6 2 12 8 18\"></polyline>"
-    description: "We create content that you can apply immediately in your work."
-
-# Contact links
-discord: "https://discord.gg/example" # For team layout
-github: "https://github.com/example/example" # For team layout
-newsletter: "https://newsletter.example.com/signup" # For both layouts
-contact: "/contact" # For single author layout
-
-# Explicitly choose layout (optional - will be auto-detected if not specified)
-layout: "team" # or "single"
----
-
-Any additional content will be displayed after the automatically generated sections.
 ```
 
 ### Layout Auto-Detection
@@ -465,7 +459,7 @@ Math rendering is enabled by default. To disable it:
 
 DevBlog supports the following delimiters for math expressions:
 
-1. Inline math with single dollar signs: `$E = mc^2$`
+1. Inline math with single dollar signs: `$E = mc^2$
 2. Inline math with `\( ... \)`: `\(E = mc^2\)`
 3. Display math with double dollar signs:
    ```
@@ -473,7 +467,7 @@ DevBlog supports the following delimiters for math expressions:
    \frac{d}{dx}e^x = e^x
    $$
    ```
-4. Display math with `\[ ... \]`:
+ 4. Display math with `\[ ... \]`:
    ```
    \[
    \frac{d}{dx}e^x = e^x

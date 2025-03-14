@@ -51,7 +51,9 @@
     .Params.authors }} {{ $authorData = index . 0 }} {{ end }} {{ end }}
 
     <div class="author-avatar">
-      <img src="{{ $authorData.image }}" alt="{{ $authorData.name }}" />
+      <img src="{{ if hasPrefix $authorData.image "http" }}{{ $authorData.image
+      }}{{ else }}{{ $authorData.image | relURL }}{{ end }}" alt="{{
+      $authorData.name }}" />
     </div>
     <div class="author-info">
       <h3>{{ $authorData.name }}</h3>

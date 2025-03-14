@@ -138,7 +138,7 @@ default "default" -}} {{- if eq $heroStyle "default" -}}
 <!-- Image Background Hero Style -->
 <section
   class="hero hero-image"
-  style="background-image: url('{{ $heroConfig.backgroundImage }}');"
+  style="background-image: url('{{ if hasPrefix $heroConfig.backgroundImage "http" }}{{ $heroConfig.backgroundImage }}{{ else }}{{ $heroConfig.backgroundImage | relURL }}{{ end }}');"
 >
   <div class="hero-overlay"></div>
   <div class="container">

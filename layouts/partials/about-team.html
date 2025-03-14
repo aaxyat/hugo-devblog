@@ -50,7 +50,8 @@
     {{ end }} {{ range $teamData }}
     <div class="team-member">
       <div class="member-avatar">
-        <img src="{{ .image }}" alt="{{ .name }}" />
+        <img src="{{ if hasPrefix .image "http" }}{{ .image }}{{ else }}{{
+        .image | relURL }}{{ end }}" alt="{{ .name }}" />
       </div>
       <h3>{{ .name }}</h3>
       <p class="member-role">{{ .role | default .title }}</p>
