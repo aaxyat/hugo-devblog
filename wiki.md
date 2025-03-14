@@ -27,7 +27,7 @@ DevBlog is a modern, responsive Hugo theme designed for developer blogs. This do
 
 ## Basic Configuration
 
-Here's a basic configuration for your `config.toml`:
+Here's a basic configuration for your `hugo.toml` (formerly `config.toml`):
 
 ```toml
 baseURL = "https://example.com/"
@@ -38,6 +38,8 @@ theme = "devblog"
 [params]
   description = "A modern blog for developers, sharing insights and experiences in the world of technology."
 ```
+
+> Note: Hugo now uses `hugo.toml` as the default configuration filename, though `config.toml` is still supported for backward compatibility.
 
 ## Social Media Links
 

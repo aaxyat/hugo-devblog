@@ -22,10 +22,40 @@ DevBlog is a responsive, clean, and feature-rich Hugo theme specifically designe
 
 ## Installation
 
-### Method 1: As a Git Submodule (recommended)
+### Creating a New Site (For beginners)
+
+If you're starting from scratch, follow these steps:
 
 ```bash
+# Install Hugo (if not already installed)
+# macOS: brew install hugo
+# Windows: choco install hugo-extended
+# For other platforms, see https://gohugo.io/installation/
+
+# Create a new Hugo site
+hugo new site my-blog
+cd my-blog
+
+# Initialize Git repository
+git init
+
+# Add DevBlog theme as a Git submodule
+git submodule add https://github.com/aaxyat/hugo-devblog.git themes/devblog
+
+# Create basic configuration
+cp themes/devblog/exampleSite/hugo.toml .
+```
+
+### Method 1: As a Git Submodule (For existing Hugo sites)
+
+```bash
+# Navigate to your existing Hugo site
 cd your-hugo-site
+
+# Initialize Git repository (if not already done)
+git init
+
+# Add DevBlog theme as a Git submodule
 git submodule add https://github.com/aaxyat/hugo-devblog.git themes/devblog
 ```
 
@@ -37,7 +67,7 @@ git submodule add https://github.com/aaxyat/hugo-devblog.git themes/devblog
 
 ## Getting Started
 
-1. In your Hugo site's root directory, edit your `config.toml`:
+1. In your Hugo site's root directory, edit your `hugo.toml` (formerly `config.toml`):
 
 ```toml
 baseURL = "https://example.com/"
