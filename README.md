@@ -26,19 +26,31 @@ DevBlog is a responsive, clean, and feature-rich Hugo theme specifically designe
 
 If you're starting from scratch, follow these steps:
 
-```bash
+
 # Install Hugo (if not already installed)
-# macOS: brew install hugo
-# Windows: choco install hugo-extended
-# For other platforms, see https://gohugo.io/installation/
+### macOS: 
+
+```bash
+brew install hugo
+```
+### Windows: 
+
+```bash
+choco install hugo-extended
+```
+## For other platforms, see https://gohugo.io/installation/
 
 # Create a new Hugo site
+
+```bash
 hugo new site my-blog
 cd my-blog
+```
 
 # Initialize Git repository
+```bash
 git init
-
+```
 
 ### Method 1: As a Git Submodule (For existing Hugo sites)
 
