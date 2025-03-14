@@ -185,6 +185,7 @@ Create a file at `content/about/index.md`. The theme will automatically detect w
 title: "About Us"
 description: "Learn more about the team behind this blog"
 startYear: 2022
+type: "about"
 
 # Customize section titles (optional)
 missionTitle: "Our Mission" # or "My Mission" for single author
@@ -219,7 +220,7 @@ authors:
 
   - name: "Jane Smith"
     title: "Backend Developer & Editor"
-    image: "https://example.com/images/jane.jpg"  # Using an external URL
+    image: "https://picsum.photos/id/64/200/300.jpg"  # Using an external URL
     bio: "Cloud architecture specialist with expertise in serverless technologies."
     github: "janesmith"
     twitter: "janesmith"
