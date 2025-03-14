@@ -11,12 +11,14 @@ This document contains the release notes for the DevBlog Hugo theme. It details 
 - Enhanced flexibility for using both local and external image sources
 - Added clickable post cards for better user experience
 - Improved navigation with author name linking to about page and date linking to archive page
+- Added comprehensive favicon support with multiple formats and fallback options
 
 #### Improvements
 - Updated documentation to show examples of URL-based images
 - More consistent image handling across all theme components
 - Updated about page documentation with clearer instructions for content type
 - Added proper layout detection for about pages to fix blank page issues
+- Added favicon configuration documentation
 
 #### Bug Fixes
 - Fixed issue where the about page would display as a blank page when missing type parameter

@@ -42,6 +42,37 @@ theme = "devblog"
 
 > Note: Hugo now uses `hugo.toml` as the default configuration filename, though `config.toml` is still supported for backward compatibility.
 
+### Favicon Configuration
+
+Configure your site's favicon by adding these parameters to your `hugo.toml`:
+
+```toml
+[params]
+  # For complete set of favicons (recommended)
+  favicon = "/favicon"  # Points to static/favicon/ directory
+  
+  # OR for simple favicon
+  favicon = "/favicon.ico"  # Points to static/favicon.ico
+```
+
+Place your favicon files in either:
+
+1. Complete set (recommended):
+   ```
+   static/
+   └── favicon/
+       ├── favicon-16x16.png
+       ├── favicon-32x32.png
+       ├── apple-touch-icon.png
+       └── site.webmanifist
+   ```
+
+2. Simple approach:
+   ```
+   static/
+   └── favicon.ico
+   ```
+
 ## Social Media Links
 
 Configure your social media profiles:
@@ -505,3 +536,15 @@ func main() {
     fmt.Println("Hello, world!")
 }
 ```
+
+### Interactive Elements
+
+The theme includes several interactive elements for better user experience:
+
+1. **Clickable Post Cards**: The entire blog post card is clickable, making it easier for users to navigate to articles
+2. **Navigation Links**: 
+   - Author names link to the about page
+   - Post dates link to the archive page
+   - Current section is highlighted in the main navigation
+3. **Code Copy**: Code blocks include a copy button on hover
+4. **KaTeX Support**: Mathematical expressions render automatically
