@@ -39,12 +39,6 @@ cd my-blog
 # Initialize Git repository
 git init
 
-# Add DevBlog theme as a Git submodule
-git submodule add https://github.com/aaxyat/hugo-devblog.git themes/devblog
-
-# Create basic configuration
-cp themes/devblog/exampleSite/hugo.toml .
-```
 
 ### Method 1: As a Git Submodule (For existing Hugo sites)
 
